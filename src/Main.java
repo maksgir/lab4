@@ -11,7 +11,7 @@ public class Main {
         uncleJulius.doSomething();
         frechenBoch.isCooking(uncleJulius.getIsComing());
 
-        for (TasksEnum x: TasksEnum.values()) {
+        for (TasksEnum x : TasksEnum.values()) {
             Task task = new Task(x);
             carlson.setTask(task);
             boy.setTask(carlson.sayTask());

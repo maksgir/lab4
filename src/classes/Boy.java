@@ -4,6 +4,7 @@ import util.PersonInterface;
 
 public class Boy implements PersonInterface {
     private Task task;
+
     @Override
     public void doSomething() {
         System.out.println();
@@ -14,12 +15,14 @@ public class Boy implements PersonInterface {
         System.out.print("Малыш со всех ног кинулся делать все то");
         System.out.println(", что по мнению Карлсона, надо было сделать в этом случае для своего лучшего друга.");
     }
-    public void setTask(Task task){
+
+    public void setTask(Task task) {
         this.task = task;
     }
-    public void doTask(){
+
+    public void doTask() {
         System.out.print("Малыш сейчас занимается ");
-        switch (task.getTask()){
+        switch (task.getTask()) {
             case "BATHROBE":
                 System.out.println("поиском купательного халата");
                 break;
@@ -33,22 +36,24 @@ public class Boy implements PersonInterface {
                 System.out.println("развешиванием вещей");
                 break;
         }
-        if (task.isDifficult()){
+        if (task.isDifficult()) {
             System.out.println("Это не так то просто, нужно попросить у Фрекен Бок");
-        } else{
+        } else {
             System.out.println("Это задание легкое");
             completeTask();
         }
 
     }
-    public void completeTask(){
+
+    public void completeTask() {
         System.out.println("Задание выполнено");
         task.complete();
     }
 
-    public boolean askFrechenBoch(){
+    public boolean askFrechenBoch() {
         return task.isDifficult();
     }
+
     @Override
     public String toString() {
         return "Человек Малыш";

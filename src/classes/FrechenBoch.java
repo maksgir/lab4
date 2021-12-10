@@ -3,9 +3,9 @@ package classes;
 import util.PersonInterface;
 
 public class FrechenBoch implements PersonInterface {
-    private boolean energy=true;
-    private boolean time=true;
-    private boolean resistance=true;
+    private boolean energy = true;
+    private boolean time = true;
+    private boolean resistance = true;
 
 
     @Override
@@ -14,8 +14,9 @@ public class FrechenBoch implements PersonInterface {
         provideBoy();
 
     }
-    public void isCooking(boolean arrive){
-        if (arrive){
+
+    public void isCooking(boolean arrive) {
+        if (arrive) {
             System.out.println("Фрекен Бок нужно жарить ципленка по этому случаю");
             energy = false;
             time = false;
@@ -24,14 +25,14 @@ public class FrechenBoch implements PersonInterface {
         }
     }
 
-    public void isResistible(){
+    public void isResistible() {
         if (!energy && !time) {
-            resistance=false;
+            resistance = false;
             System.out.println("но у нее уже не было ни сил, ни времени оказывать дальнейшее сопротивление, потому что она жарила цыпленка");
         }
     }
 
-    public void provideBoy(){
+    public void provideBoy() {
         System.out.println("Фрекен Бок дала Малышу что он просил");
     }
 

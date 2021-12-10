@@ -14,7 +14,8 @@ public class UncleJulius implements PersonInterface {
             System.out.println("Дядя Юлиус не приезжает в гости к Фрекен Бок");
         }
     }
-    public boolean getIsComing(){
+
+    public boolean getIsComing() {
         return isComing;
     }
 

@@ -7,6 +7,7 @@ public class Task extends TasksAbstract {
     public Task(TasksEnum task) {
         super(task);
     }
+
     @Override
     public String toString() {
         return "Задание для малыша";

@@ -13,8 +13,8 @@ public class Carlson implements PersonInterface {
         System.out.print("Карлсон уже сидел в белом купальном халате в постели Малыша,");
         System.out.print(" пил обжигающий шоколад и с аппетитом ел плюшки,");
         System.out.print(" а в ванной комнате были развешаны для просушки его ");
-        for (Clothes x: Clothes.values()){
-            switch (x.toString()){
+        for (Clothes x : Clothes.values()) {
+            switch (x.toString()) {
                 case "SHIRTS":
                     System.out.print("рубашки, ");
                     break;
@@ -30,10 +30,12 @@ public class Carlson implements PersonInterface {
             }
         }
     }
-    public void setTask(Task task){
+
+    public void setTask(Task task) {
         this.task = task;
     }
-    public Task sayTask(){
+
+    public Task sayTask() {
         return task;
     }
 
