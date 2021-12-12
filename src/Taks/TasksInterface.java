@@ -1,4 +1,4 @@
-package util;
+package Taks;
 
 public interface TasksInterface {
     String getTask();
@@ -7,6 +7,6 @@ public interface TasksInterface {
 
     boolean isDifficult();
 
-    void complete();
+    void finish();
 
 }

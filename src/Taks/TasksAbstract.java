@@ -1,21 +1,29 @@
-package util;
+package Taks;
 
-import util.TasksInterface;
+import Taks.TasksInterface;
 
 public abstract class TasksAbstract implements TasksInterface {
     private boolean progress; // 0-haven't done 1-done
     private final boolean difficult; //0-easy, 1-hard
-    private final TasksEnum task;
+    private final String name;
 
-    public TasksAbstract(TasksEnum task) {
-        this.task = task;
-        this.difficult = task.toString().equals("CHOCOLATE") || task.toString().equals("BUNS");
+    public TasksAbstract(String name) {
+        this.name = name;
+        this.difficult = name.equals("CHOCOLATE") || name.equals("BUNS");
 
     }
 
+    public abstract void complete();
+
+    public void finish(){
+        System.out.println("Задание выполнено");
+        progress = true;
+    }
+
+
     @Override
     public String getTask() {
-        return task.toString();
+        return name;
     }
 
     @Override
@@ -28,9 +36,5 @@ public abstract class TasksAbstract implements TasksInterface {
         return difficult;
     }
 
-    @Override
-    public void complete() {
-        progress = true;
-    }
 
 }
