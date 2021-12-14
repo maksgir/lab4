@@ -1,12 +1,6 @@
 import Clothes.*;
-import People.Boy;
-import People.Carlson;
-import People.FrechenBoch;
-import People.UncleJulius;
-import Taks.BathrobeTask;
-import Taks.BunsTask;
-import Taks.ChocolateTask;
-import Taks.ClothesTask;
+import People.*;
+import Taks.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,7 +14,7 @@ public class Main {
         BathrobeTask bathrobe = new BathrobeTask("BATHROBE");
         carlson.setTask(bathrobe);
         boy.askCarlson(carlson.sayTask());
-        boy.doTask();
+        boy.doSomething();
 
         ChocolateTask chocolate = new ChocolateTask("CHOCOLATE");
         carlson.setTask(chocolate);
@@ -32,16 +26,16 @@ public class Main {
         boy.askCarlson(carlson.sayTask());
         boy.askForHelp(frechen);
 
-        Shirt shirt = new Shirt(carlson, TypeEnum.SHIRTS);
-        Pants pants = new Pants(carlson, TypeEnum.PANTS);
-        Socks socks = new Socks(carlson, TypeEnum.SOCKS);
-        Sneakers sneakers = new Sneakers(carlson, TypeEnum.SNEAKERS);
+        Shirt shirt = new Shirt(carlson);
+        Pants pants = new Pants(carlson);
+        Socks socks = new Socks(carlson);
+        Sneakers sneakers = new Sneakers(carlson);
 
         ClothesAbstract[] clothes = {shirt, pants, socks, sneakers};
         ClothesTask clothesTask = new ClothesTask("CLOTHES", clothes);
         carlson.setTask(clothesTask);
         boy.askCarlson(carlson.sayTask());
-        boy.doTask();
+        boy.doSomething();
 
 
         try {

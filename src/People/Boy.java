@@ -2,62 +2,48 @@ package People;
 
 import Taks.TasksAbstract;
 
+import java.util.Objects;
+
 public class Boy implements PersonInterface {
     private TasksAbstract task;
 
     @Override
     public void doSomething() {
-        System.out.println();
+        task.complete();
     }
 
-    public void askCarlson(TasksAbstract newTask){
-        System.out.print("Малыш получил задание - ");
-        switch (newTask.getTask()){
-            case "BATHROBE":
-                System.out.println("найти купальный халат");
-                break;
-            case "CHOCOLATE":
-                System.out.println("найти горячий шоколад");
-                break;
-            case "BUNS":
-                System.out.println("найти плюшки");
-                break;
-            case "CLOTHES":
-                System.out.println("развесить одежду");
-                break;
-        }
+    public void askCarlson(TasksAbstract newTask) {
+        System.out.println("Малыш получил задание - " + newTask.getTask());
+
         this.task = newTask;
     }
 
-    public void askForHelp(FrechenBoch frechen){
+    public void askForHelp(FrechenBoch frechen) {
         System.out.println("Малыш просит помощь у Фрекен Бок");
-        if (frechen.helpBoy()){
+        if (frechen.helpBoy()) {
             System.out.println("Фрекен Бок дала Малышу что он просил");
-            doTask();
-        } else{
+            doSomething();
+        } else {
             System.out.println("Фрекен Бок не дала Малышу что он просил :(");
         }
-    }
-    public void collectClothes(){
-
-    }
-    public void doTask(){
-        task.complete();
     }
 
 
     @Override
     public String toString() {
-        return "Человек Малыш";
+        return "Малыш";
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return this == obj;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Boy boy = (Boy) o;
+        return Objects.equals(task, boy.task);
     }
 
     @Override
     public int hashCode() {
-        return toString().hashCode();
+        return Objects.hash(task);
     }
 }

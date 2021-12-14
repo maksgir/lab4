@@ -9,6 +9,10 @@ public class ClothesTask extends TasksAbstract {
         super(name);
         this.clothes = clothes;
     }
+    @Override
+    public String getTask() {
+        return "развесить одежду";
+    }
 
     @Override
     public void complete() {
@@ -36,5 +40,19 @@ public class ClothesTask extends TasksAbstract {
             System.out.println("Вещь - " + name + " владельца : " + thing.getOwner() + " развешена");
         }
         finish();
+    }
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }

@@ -1,5 +1,7 @@
 package People;
 
+import java.util.Objects;
+
 public class FrechenBoch implements PersonInterface {
     private int energy = 100;
     private int freeTime = 100;
@@ -35,17 +37,19 @@ public class FrechenBoch implements PersonInterface {
 
     @Override
     public String toString() {
-        return "Человек Фрекен Бок";
+        return "Фрекен Бок";
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return this == obj;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FrechenBoch that = (FrechenBoch) o;
+        return energy == that.energy && freeTime == that.freeTime && resistance == that.resistance;
     }
 
     @Override
     public int hashCode() {
-        return toString().hashCode();
-
+        return Objects.hash(energy, freeTime, resistance);
     }
 }

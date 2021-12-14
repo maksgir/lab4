@@ -4,7 +4,26 @@ import Clothes.ClothesAbstract;
 import People.PersonInterface;
 
 public class Sneakers extends ClothesAbstract {
-    public Sneakers(PersonInterface owner, TypeEnum type) {
-        super(owner, type);
+    public Sneakers(PersonInterface owner) {
+        super(owner);
+        this.type = TypeEnum.SNEAKERS;
+    }
+    @Override
+    public String toString() {
+        String hang = this.isHanged ? "развешена" : "неразвешена";
+        return "Кроссовки" +
+                "владельца=" + owner +
+                ", типа:" + type +
+                ", " + hang;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }

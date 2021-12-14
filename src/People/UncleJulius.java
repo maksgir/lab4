@@ -3,6 +3,8 @@ package People;
 import People.FrechenBoch;
 import People.PersonInterface;
 
+import java.util.Objects;
+
 public class UncleJulius implements PersonInterface {
     private boolean isComing;
 
@@ -17,19 +19,19 @@ public class UncleJulius implements PersonInterface {
     }
     @Override
     public String toString() {
-        return "Человек Дядя Юлиус";
+        return "Дядя Юлиус";
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return this == obj;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UncleJulius that = (UncleJulius) o;
+        return isComing == that.isComing;
     }
 
     @Override
     public int hashCode() {
-        return toString().hashCode();
-
+        return Objects.hash(isComing);
     }
-
-
 }
