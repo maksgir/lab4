@@ -1,7 +1,6 @@
 package Clothes;
 
-import Clothes.ClothesAbstract;
-import People.PersonInterface;
+import Creatures.PersonInterface;
 
 public class Pants extends ClothesAbstract {
     public Pants(PersonInterface owner) {

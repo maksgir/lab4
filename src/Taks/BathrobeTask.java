@@ -5,10 +5,12 @@ public class BathrobeTask extends TasksAbstract {
     public BathrobeTask(String task) {
         super(task);
     }
+
     @Override
     public String getTask() {
         return "найти купальный халат";
     }
+
     @Override
     public void complete() {
         System.out.println("Нашел купальный халат");

@@ -1,7 +1,6 @@
-package People;
+package Creatures;
 
-import People.FrechenBoch;
-import People.PersonInterface;
+import Exceptions.UncleIsNotComingException;
 
 import java.util.Objects;
 
@@ -14,9 +13,18 @@ public class UncleJulius implements PersonInterface {
         isComing = true;
     }
 
-    public void sayFrechen(FrechenBoch frechen){
-        frechen.doSomething();
+    public boolean getIsComing() {
+        return isComing;
     }
+
+    public void sayFrechen(FrechenBoch frechen) throws UncleIsNotComingException {
+        if (getIsComing()) {
+            frechen.doSomething();
+        } else {
+            throw new UncleIsNotComingException("Дядя Юлиус обманул Фрекен Бок и не приедет");
+        }
+    }
+
     @Override
     public String toString() {
         return "Дядя Юлиус";

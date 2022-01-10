@@ -1,4 +1,4 @@
-package People;
+package Creatures;
 
 import Taks.TasksAbstract;
 
@@ -9,6 +9,8 @@ public class Carlson implements PersonInterface {
     private boolean isWearingBathrobe;
     private boolean isDrinkingChocolate;
     private boolean isEatingBuns;
+    private boolean isMouthBusy;
+    private boolean isActive;
 
 
     @Override
@@ -17,6 +19,15 @@ public class Carlson implements PersonInterface {
         wearBathrobe();
         drinkChocolate();
         eatBuns();
+    }
+
+    public class Bun {
+        private boolean isEaten;
+
+        public void beEaten() {
+            System.out.println("плюшку съели");
+            isEaten = true;
+        }
     }
 
     public void wearBathrobe() {
@@ -32,6 +43,18 @@ public class Carlson implements PersonInterface {
     public void eatBuns() {
         isEatingBuns = true;
         System.out.println("и с аппетитом ел плюшки");
+
+    }
+
+    public void putBuns() {
+        System.out.print("Карлсон засунул в рот целую плюшку ");
+        isMouthBusy = true;
+
+    }
+
+    public String noddle() {
+        isActive = true;
+        return "и поэтому только энергично закивал";
     }
 
 
@@ -41,6 +64,19 @@ public class Carlson implements PersonInterface {
 
     public void setTask(TasksAbstract task) {
         this.task = task;
+    }
+
+    public void answerBoy(String question) {
+        System.out.printf("- %s - удивленно переспросил Малыш.%n", question);
+        putBuns();
+        System.out.println(sayYes());
+    }
+
+    public String sayYes() {
+        if (isMouthBusy)
+            return noddle();
+
+        return "и ответил да";
     }
 
     @Override

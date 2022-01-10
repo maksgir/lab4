@@ -1,5 +1,6 @@
 package Taks;
 
+import Exceptions.IncorrectTaskNameException;
 import Taks.TasksInterface;
 
 import java.util.Objects;
@@ -8,17 +9,42 @@ public abstract class TasksAbstract implements TasksInterface {
     private boolean progress; // 0-haven't done 1-done
     private final boolean difficult; //0-easy, 1-hard
     private final String name;
+    private String time;
+    private String place;
 
     public TasksAbstract(String name) {
-        this.name = name;
+
+        if (name != null) {
+            this.name = name;
+        } else {
+            throw new IncorrectTaskNameException("Название задания не может быть null!");
+        }
         this.difficult = name.equals("CHOCOLATE") || name.equals("BUNS");
+
     }
 
     public abstract void complete();
 
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public String getPlace() {
+        return this.place;
+    }
+
     public void finish() {
         System.out.println("Задание выполнено");
         progress = true;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getTime() {
+        return this.time;
     }
 
 
@@ -42,7 +68,7 @@ public abstract class TasksAbstract implements TasksInterface {
         String done = isDone() ? "выполнено" : "невыполнено";
         String dif = isDifficult() ? "сложное" : "легкое";
         return "Задание" +
-                done + ", "+
+                done + ", " +
                 dif +
                 ", название='" + name;
     }

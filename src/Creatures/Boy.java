@@ -1,4 +1,4 @@
-package People;
+package Creatures;
 
 import Taks.TasksAbstract;
 
@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class Boy implements PersonInterface {
     private TasksAbstract task;
+    private boolean isWorried;
 
     @Override
     public void doSomething() {
@@ -14,7 +15,6 @@ public class Boy implements PersonInterface {
 
     public void askCarlson(TasksAbstract newTask) {
         System.out.println("Малыш получил задание - " + newTask.getTask());
-
         this.task = newTask;
     }
 
@@ -26,6 +26,30 @@ public class Boy implements PersonInterface {
         } else {
             System.out.println("Фрекен Бок не дала Малышу что он просил :(");
         }
+    }
+
+    public void worry() {
+        System.out.println("Малыш удивился");
+        isWorried = true;
+    }
+
+    public String ensureAboutTheTime() {
+
+        class Question {
+            private final String question;
+
+            public Question(String time) {
+                this.question = time + "?";
+            }
+
+            public String getQuestion() {
+                return question;
+            }
+        }
+
+        Question q = new Question(this.task.getTime());
+
+        return q.getQuestion();
     }
 
 

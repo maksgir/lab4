@@ -9,6 +9,7 @@ public class ClothesTask extends TasksAbstract {
         super(name);
         this.clothes = clothes;
     }
+
     @Override
     public String getTask() {
         return "развесить одежду";
@@ -41,6 +42,7 @@ public class ClothesTask extends TasksAbstract {
         }
         finish();
     }
+
     @Override
     public String toString() {
         return super.toString();

@@ -1,22 +1,28 @@
-package People;
+package Creatures;
 
 import java.util.Objects;
 
 public class FrechenBoch implements PersonInterface {
-    private int energy = 100;
-    private int freeTime = 100;
+    private int energy = 50;
+    private int freeTime = 50;
     private boolean resistance = true;
 
 
     @Override
     public void doSomething() {
         System.out.println("По этому случаю Фрекен Бок жарит ципленка");
-        energy -= 100;
-        freeTime -= 100;
+        energy -= 50;
+        freeTime -= 50;
     }
 
-    public boolean helpBoy(){
-        if (isResistance()){
+    public void relax() {
+        System.out.println("Фрекен Бок отдыхвет");
+        energy += 50;
+        freeTime += 50;
+    }
+
+    public boolean helpBoy() {
+        if (isResistance()) {
             System.out.println("У Фрекен Бок есть силы и время оказывать сопротивление Малышу");
             return false;
         } else {
@@ -26,13 +32,13 @@ public class FrechenBoch implements PersonInterface {
 
     }
 
-    public boolean isResistance(){
+    public boolean isResistance() {
         resistance = (isLow(energy) && isLow(freeTime));
         return !resistance;
     }
 
-    private boolean isLow(int condition){
-        return (condition ==0);
+    private boolean isLow(int condition) {
+        return (condition < 30);
     }
 
     @Override

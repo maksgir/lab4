@@ -1,13 +1,13 @@
 package Clothes;
 
-import Clothes.ClothesAbstract;
-import People.PersonInterface;
+import Creatures.PersonInterface;
 
 public class Sneakers extends ClothesAbstract {
     public Sneakers(PersonInterface owner) {
         super(owner);
         this.type = TypeEnum.SNEAKERS;
     }
+
     @Override
     public String toString() {
         String hang = this.isHanged ? "развешена" : "неразвешена";

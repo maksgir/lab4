@@ -1,18 +1,20 @@
 package Taks;
 
-public class BunsTask extends TasksAbstract {
-    public BunsTask(String name) {
+public class SittingTask extends TasksAbstract {
+
+    public SittingTask(String name, String place, String time) {
         super(name);
+        setPlace(place);
+        setTime(time);
     }
 
     @Override
     public String getTask() {
-        return "найти плюшки";
+        return String.format("посидеть %s %s", getPlace(), getTime());
     }
 
     @Override
     public void complete() {
-        System.out.println("Нашел плюшки");
         finish();
     }
 

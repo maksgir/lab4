@@ -1,6 +1,6 @@
 package Clothes;
 
-import People.PersonInterface;
+import Creatures.PersonInterface;
 
 import java.util.Objects;
 
@@ -12,6 +12,10 @@ public abstract class ClothesAbstract {
     public ClothesAbstract(PersonInterface owner) {
         this.owner = owner;
         isHanged = false;
+    }
+
+    public static enum TypeEnum {
+        SHIRTS, PANTS, SOCKS, SNEAKERS
     }
 
     public void dry() {
