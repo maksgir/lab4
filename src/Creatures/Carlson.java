@@ -1,5 +1,6 @@
 package Creatures;
 
+import Place.PlaceInterface;
 import Taks.TasksAbstract;
 
 import java.util.Objects;
@@ -11,6 +12,7 @@ public class Carlson implements PersonInterface {
     private boolean isEatingBuns;
     private boolean isMouthBusy;
     private boolean isActive;
+    private PlaceInterface place;
 
 
     @Override
@@ -28,6 +30,15 @@ public class Carlson implements PersonInterface {
             System.out.println("плюшку съели");
             isEaten = true;
         }
+    }
+
+    public void sitOnBed(PlaceInterface place) {
+        this.place = place;
+        System.out.printf("Карлсон уселся %s%n", place.toString());
+    }
+
+    public PlaceInterface getPlace() {
+        return place;
     }
 
     public void wearBathrobe() {

@@ -1,11 +1,24 @@
 package Taks;
 
-public class SittingTask extends TasksAbstract {
+import Place.PlaceInterface;
+import Time.TimeInterface;
 
-    public SittingTask(String name, String place, String time) {
+public class SittingTask extends TasksAbstract {
+    private PlaceInterface place;
+    private TimeInterface time;
+
+    public SittingTask(String name, PlaceInterface place, TimeInterface time) {
         super(name);
-        setPlace(place);
-        setTime(time);
+        this.place = place;
+        this.time = time;
+    }
+
+    public String getPlace() {
+        return place.toString();
+    }
+
+    public String getTime() {
+        return time.getTime();
     }
 
     @Override

@@ -9,16 +9,13 @@ public abstract class TasksAbstract implements TasksInterface {
     private boolean progress; // 0-haven't done 1-done
     private final boolean difficult; //0-easy, 1-hard
     private final String name;
-    private String time;
-    private String place;
+
 
     public TasksAbstract(String name) {
-
-        if (name != null) {
-            this.name = name;
-        } else {
+        if (name == null) {
             throw new IncorrectTaskNameException("Название задания не может быть null!");
         }
+        this.name = name;
         this.difficult = name.equals("CHOCOLATE") || name.equals("BUNS");
 
     }
@@ -26,25 +23,9 @@ public abstract class TasksAbstract implements TasksInterface {
     public abstract void complete();
 
 
-    public void setPlace(String place) {
-        this.place = place;
-    }
-
-    public String getPlace() {
-        return this.place;
-    }
-
     public void finish() {
         System.out.println("Задание выполнено");
         progress = true;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getTime() {
-        return this.time;
     }
 
 

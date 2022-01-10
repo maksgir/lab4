@@ -33,7 +33,7 @@ public class Boy implements PersonInterface {
         isWorried = true;
     }
 
-    public String ensureAboutTheTime() {
+    public String ensureAboutTheTime(String time) {
 
         class Question {
             private final String question;
@@ -47,7 +47,7 @@ public class Boy implements PersonInterface {
             }
         }
 
-        Question q = new Question(this.task.getTime());
+        Question q = new Question(time);
 
         return q.getQuestion();
     }

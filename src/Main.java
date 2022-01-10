@@ -1,8 +1,9 @@
 import Clothes.*;
 import Creatures.*;
-import Exceptions.IncorrectTaskNameException;
 import Exceptions.UncleIsNotComingException;
 import Taks.*;
+import Place.Bed;
+import Time.Time;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,34 +21,22 @@ public class Main {
         }
 
 
-        try {
-            BathrobeTask bathrobe = new BathrobeTask("BATHROBE");
-            carlson.setTask(bathrobe);
-            boy.askCarlson(carlson.sayTask());
-            boy.doSomething();
-        } catch (IncorrectTaskNameException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Задание не может быть выполнено");
-        }
+        BathrobeTask bathrobe = new BathrobeTask("BATHROBE");
+        carlson.setTask(bathrobe);
+        boy.askCarlson(carlson.sayTask());
+        boy.doSomething();
 
-        try {
-            ChocolateTask chocolate = new ChocolateTask("CHOCOLATE");
-            carlson.setTask(chocolate);
-            boy.askCarlson(carlson.sayTask());
-            boy.askForHelp(frechen);
-        } catch (IncorrectTaskNameException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Задание не может быть выполнено");
-        }
-        try {
-            BunsTask buns = new BunsTask("BUNS");
-            carlson.setTask(buns);
-            boy.askCarlson(carlson.sayTask());
-            boy.askForHelp(frechen);
-        } catch (IncorrectTaskNameException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Задание не может быть выполнено");
-        }
+
+        ChocolateTask chocolate = new ChocolateTask("CHOCOLATE");
+        carlson.setTask(chocolate);
+        boy.askCarlson(carlson.sayTask());
+        boy.askForHelp(frechen);
+
+
+        BunsTask buns = new BunsTask("BUNS");
+        carlson.setTask(buns);
+        boy.askCarlson(carlson.sayTask());
+        boy.askForHelp(frechen);
 
 
         Shirt shirt = new Shirt(carlson);
@@ -55,16 +44,13 @@ public class Main {
         Socks socks = new Socks(carlson);
         Sneakers sneakers = new Sneakers(carlson);
 
-        try {
-            ClothesAbstract[] clothes = {shirt, pants, socks, sneakers};
-            ClothesTask clothesTask = new ClothesTask("CLOTHES", clothes);
-            carlson.setTask(clothesTask);
-            boy.askCarlson(carlson.sayTask());
-            boy.doSomething();
-        } catch (IncorrectTaskNameException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Задание не может быть выполнено");
-        }
+
+        ClothesAbstract[] clothes = {shirt, pants, socks, sneakers};
+        ClothesTask clothesTask = new ClothesTask("CLOTHES", clothes);
+        carlson.setTask(clothesTask);
+        boy.askCarlson(carlson.sayTask());
+        boy.doSomething();
+
 
         try {
             Thread.sleep(2000);
@@ -76,27 +62,46 @@ public class Main {
 
         System.out.printf("%n lab4-----------%n%n");
 
-        SittingTask sitting = new SittingTask("BED", "у изголовья кровати Карлсона", "всю ночь");
+        Bed bed = new Bed(boy);
+        bed.takePlace();
+        Bed.Headboard headboard = bed.new Headboard();
+        headboard.takePlace();
+
+        Time time = new Time();
+        time.setTime("всю ночь");
+
+        SittingTask sitting = new SittingTask("BED", headboard, time);
+        carlson.sitOnBed(bed);
         carlson.setTask(sitting);
         Carlson.Bun bun = carlson.new Bun();
         boy.askCarlson(carlson.sayTask());
 
         boy.worry();
-        carlson.answerBoy(boy.ensureAboutTheTime());
+        carlson.answerBoy(boy.ensureAboutTheTime(time.getTime()));
         bun.beEaten();
 
         Dog bimbo = new Dog() {
             public boolean isDisappointed;
+            public boolean isMakingNoise;
+
+            public void disappoint() {
+                isDisappointed = true;
+                System.out.println("Бимбо не нравилось, что Карлсон лежал в постели Малыша.");
+                bark();
+            }
 
             @Override
             public void bark() {
-                isDisappointed = true;
-                System.out.println("Бимбо надрывался от лая");
+                isMakingNoise = true;
+                System.out.println("Он надрывался от лая");
             }
 
         };
 
-        bimbo.bark();
+        if (carlson.getPlace().getOwner().equals(boy)) {
+            bimbo.disappoint();
+        }
+
 
     }
 }
